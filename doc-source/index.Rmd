@@ -1,0 +1,58 @@
+--- 
+title: "Spatial Analysis and Mapping in R"
+author: "Josh M. London"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "This is a book of resources, references, and examples as part of the Spatial Analysis and Mapping in R workshop as part of SOLAMAC 2018 in Lima, Peru"
+---
+
+# Prerequisites
+
+For best results, the user should have the latest version of R (https://www.r-project.org/)
+and RStudio (https://www.rstudio.com/products/rstudio/download/) installed.
+
+The next step is to install a variet of packages that will be needed for spatial
+analysis and creating maps in R. We will start with those packages available
+from CRAN.
+
+```{r install-pkgs, eval = FALSE}
+install.packages(c(
+  "tidyverse",
+  "sf",
+  "devtools"
+))
+```
+
+<!-- The package `rgeos` currently has a bug that prevents proper installation on some -->
+<!-- systems. So, we will use the `rgeos::install_version()` function to install -->
+<!-- the previous version. -->
+
+<!-- ```{r install-rgeos, eval = FALSE} -->
+<!-- devtools::install_version("rgeos", version = "0.3-28") -->
+<!-- ``` -->
+
+Lastly, we will install the `ptolemy` package which provides access to the
+Global High-Resolution Geography for shoreline data. This will provide easy
+access to basemaps of global land masses. The package is not released to CRAN
+and so we will use `devtools::install_github()`
+
+```{r install-ptolemy, eval = FALSE}
+devtools::install_github('jmlondon/ptolemy')
+# if asked, do not upgrade the rgeos install
+```
+
+The `ptolemy` package needs to download and install the source data before
+you can access the data.
+
+```{ install-gshhg, eval = FALSE}
+ptolemy::install_gshhg()
+```
+
+At this point, you should be ready to proceed with the examples provided in this
+book. Each chapter is a separate example and each tries to introduce you to 
+elements of the `sf` and `ggplot2` / `ggspatial` packages that make importing,
+manipulating, and creating maps in R relatively easy.

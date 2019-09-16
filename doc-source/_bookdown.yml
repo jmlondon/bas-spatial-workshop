@@ -1,0 +1,6 @@
+book_filename: "solamac-spatial-mapping"
+output_dir: "../docs"
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: "Section "
